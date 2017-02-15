@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    base(href='/')
+    title Tour of Heroes - Angular 2 tutorial
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+
+    link(rel='stylesheet', href='styles.css')
+
+    // Load libraries
+    // Polyfill(s) for older browsers
+    -
+      var scripts = [
+        'lib/shim.min.js',
+        'lib/zone.js',
+        'lib/Reflect.js',
+        'lib/system.src.js',
+        'app/main.js'
+      ]
+    each script in scripts
+      script(src=script)
+
+    // Configure SystemJS
+    script(src='systemjs.config.js')
+    script.
+      System.import('main').catch(function(err){ console.error(err); });
+
+  // Display the application
+  body
+    my-app Loading...
