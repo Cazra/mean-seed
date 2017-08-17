@@ -10,10 +10,10 @@ import { Hero } from './hero.model';
 export class HeroService {
   private heroesUrl = 'rest/heroes'; // URL to web api
 
-  constructor(private http: Http, private restService: RestService) {}
+  constructor(private http: Http) {}
 
   // Deletes a Hero.
-  delete(hero: Hero): Promise<any> {
+  delete(hero: Hero): Promise<Response> {
     let headers = new Headers();
     let url = `${this.heroesUrl}/${hero._id}`;
 
