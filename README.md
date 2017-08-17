@@ -28,7 +28,7 @@ Run the following commands from the project's root to install it.
 There are two ways to build the project:
 
 1. ```grunt``` to build the project without running it. This will compile the source and dump the output into the www/ directory.
-2. ```npm start``` to build the project and then run a server on localhost:3000 hosting the built project in the www/ directory.
+2. ```npm start``` to build the project and then run a server on localhost:1337 hosting the built project in the www/ directory.
 
 ## Running the project
 

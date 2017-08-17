@@ -2,12 +2,12 @@
 
 const express = require('express');
 
-const HelloService = require('../../services/hello/HelloService');
+const HeroesRouter = require('./HeroesRouter');
 
 /**
- * Router for the Hello World service.
+ * The Express router for API services.
  */
-module.exports = class HelloRouter {
+class ApiRouter {
 
   /**
    * Creates the router.
@@ -15,10 +15,8 @@ module.exports = class HelloRouter {
    */
   static create() {
     let router = express.Router();
-
-    router.route('/')
-    .get(HelloService.hello);
-
+    router.use('/heroes', HeroesRouter.create());
     return router;
   }
-};
+}
+module.exports = ApiRouter;

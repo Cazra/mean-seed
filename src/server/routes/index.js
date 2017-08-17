@@ -1,13 +1,26 @@
 'use strict';
 
-let _ = require('underscore');
+const express = require('express');
 
-let helloRoute = require('./hello');
-let apiRouter = require('./api/ApiRouter');
+const HelloRouter = require('./hello');
+const ApiRouter = require('./api');
+const SystemService = require('../services/SystemService');
 
-_.extend(module.exports, {
-  initRoutes: (app) => {
-    helloRoute.init(app);
-    apiRouter.init(app);
+/**
+ * Top-level definition for the application's Express routes.
+ */
+module.exports = class Routes {
+
+  /**
+   * Initializes the application's routers and their routes.
+   * @param {Express} app
+   */
+  static initRoutes(app) {
+    app.use('/rest', ApiRouter.create());
+    app.use('/hello', HelloRouter.create());
+
+    app.get('/system-info', SystemService.getSystemInfo);
+
+    app.use(express.static('www'));
   }
-});
+};

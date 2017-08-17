@@ -1,23 +1,32 @@
 'use strict';
 
-let mongoose = require('mongoose');
-let autoIncrement = require('mongoose-auto-increment');
-let _ = require('underscore');
+const mongoose = require('mongoose');
+const autoIncrement = require('mongoose-auto-increment');
 
-let _model;
-function initModel() {
-  let Schema = mongoose.Schema;
-  let heroSchema = Schema({
+const Models = require('../db/Models');
+
+/**
+ * Defines the Hero model.
+ */
+module.exports = Models.define('Hero', () => {
+  const app = require('../app');
+  autoIncrement.initialize(app.db);
+
+  let schema = mongoose.Schema({
+    // _id,
     name: {
       type: String,
-      index: true,
       required: true
+    },
+    powers: {
+      type: [String],
+      default: () => {
+        return [];
+      }
     }
   });
-  heroSchema.plugin(autoIncrement.plugin, 'Hero');
-  return _model = mongoose.model('Hero', heroSchema);
-}
 
-module.exports = function() {
-  return _model || initModel();
-}
+  schema.index({ name: 1 }, { unique: true });
+  schema.plugin(autoIncrement.plugin, 'Hero');
+  return schema;
+}, { persist: true });

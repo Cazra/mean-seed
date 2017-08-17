@@ -41,6 +41,73 @@ module.exports = function(grunt) {
         ]
       }
     },
+    jshint: {
+      options: {
+        maxerr: 50,
+
+        // Enforcing
+        bitwise: true,
+        camelcase: true,
+        curly: false,
+        eqeqeq: true,
+        forin: true,
+        freeze: true,
+        immed: false,
+        indent: 2,
+        latedef: 'nofunc',
+        maxcomplexity: 20,
+        maxdepth: 5,
+        maxlen: 80,
+        newcap: true,
+        noarg: true,
+        noempty: true,
+        nonbsp: true,
+        nonew: false,
+        notypeof: false,
+        plusplus: false,
+        quotmark: false,
+        shadow: false,
+        strict: true,
+        undef: true,
+        unused: true,
+        varstmt: false,
+
+        // Environments
+        browser: false,
+        mocha: true,
+        node: true,
+
+        // Relaxing
+        asi: false,
+        boss: false,
+        debug: false,
+        eqnull: false,
+        esversion: 6,
+        evil: false,
+        expr: false,
+        funcscope: false,
+        globalstrict: false,
+        iterator: false,
+        lastsemic: false,
+        laxbreak: false,
+        laxcomma: false,
+        loopfunc: false,
+        moz: false,
+        multistr: false,
+        noyield: false,
+        proto: false,
+        scripturl: false,
+        sub: false,
+        supernew: false,
+        validthis: false
+      },
+      files: {
+        src: [
+          'src/server/**/*.js',
+          'test/**/*.js'
+        ]
+      }
+    },
     less: {
       default: {
         files: [
@@ -160,6 +227,7 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-contrib-copy');
+  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-pug');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -167,6 +235,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-tslint');
 
   grunt.registerTask('cleanup', ['clean']);
-  grunt.registerTask('default', ['copy', 'tslint', 'ts',
+  grunt.registerTask('default', ['copy', 'jshint', 'tslint', 'ts',
     'uglify', 'less', 'pug']);
 };
