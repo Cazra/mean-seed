@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Hero, HeroService } from '../shared/index';
+import { Hero, HeroService } from '../shared/hero';
 
 @Component({
   selector: 'my-heroes',

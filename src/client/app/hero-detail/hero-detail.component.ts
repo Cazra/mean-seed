@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 
-import { Hero, HeroService } from '../shared/index';
+import { Hero, HeroService } from '../shared/hero';
 
 @Component({
   selector: 'my-hero-detail',

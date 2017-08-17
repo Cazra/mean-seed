@@ -24,7 +24,7 @@ class SystemService {
    * @param {Express.Response} res
    */
   static getSystemInfo(req, res) {
-    this.systemInfo
+    SystemService.systemInfo
     .then(info => {
       res.send(info);
     });

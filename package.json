@@ -23,6 +23,7 @@
     "cli-spinner": "^0.2.6",
     "compression": "^1.7.0",
     "core-js": "^2.4.0",
+    "escape-string-regexp": "^1.0.5",
     "express": "^4.14.0",
     "mongoose": "^4.6.0",
     "mongoose-auto-increment": "^5.0.1",

@@ -1,5 +1,7 @@
 'use strict';
 
+const escStrRegex = require('escape-string-regexp');
+
 const Models = require('../../db/Models');
 const Hero = require('../../models/Hero');
 
@@ -50,8 +52,11 @@ class HeroesService {
    */
   static getHeroes(req, res) {
     console.log('Getting heroes: ' + req.body);
+    let query = req.body || {};
+    if(req.query.name)
+      query.name = new RegExp(escStrRegex(req.query.name), 'i');
 
-    Hero.model().find(req.body)
+    Hero.model().find(query)
     .then(heroes => {
       res.json({ data: heroes });
     })

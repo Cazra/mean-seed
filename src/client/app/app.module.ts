@@ -6,11 +6,26 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { routing } from './app.routing';
 
-import { DashboardComponent } from './dashboard/index';
-import { HeroDetailComponent } from './hero-detail/index';
-import { HeroSearchComponent } from './hero-search/index';
-import { HeroService } from './shared/index';
-import { HeroesComponent } from './heroes/index';
+import { DashboardComponent } from './dashboard';
+import { HeroDetailComponent } from './hero-detail';
+import { HeroSearchComponent } from './hero-search';
+
+import {
+  Base64Pipe,
+  ByteSizePipe,
+  DecodeHexPipe,
+  YesNoPipe
+} from './shared/pipes';
+
+import {
+  DialogsService,
+  FileSelectorService,
+  RestService,
+  SystemService
+} from './shared/services';
+
+import { HeroService } from './shared/hero';
+import { HeroesComponent } from './heroes';
 
 @NgModule({
   imports: [
@@ -24,10 +39,28 @@ import { HeroesComponent } from './heroes/index';
     DashboardComponent,
     HeroDetailComponent,
     HeroSearchComponent,
-    HeroesComponent
+    HeroesComponent,
+
+    ...[ // pipes
+      Base64Pipe,
+      ByteSizePipe,
+      DecodeHexPipe,
+      YesNoPipe
+    ]
+  ],
+  entryComponents: [
+    // Any components that would be dynamically created (such as modular
+    // dialogs) should go here.
   ],
   providers: [
-    HeroService
+    HeroService,
+
+    ...[ // shared services
+      DialogsService,
+      FileSelectorService,
+      RestService,
+      SystemService
+    ]
   ],
   bootstrap: [ AppComponent ] // Identifies the root component to bootstrap on start-up.
 })

@@ -24,6 +24,7 @@ module.exports = function(grunt) {
               'core-js/client/shim.min.js',
               'reflect-metadata/Reflect.js',
               'systemjs/dist/system.src.js',
+              'underscore/underscore-min.js',
               'zone.js/dist/zone.js'
             ],
             dest: LIB_DIR,
@@ -35,6 +36,12 @@ module.exports = function(grunt) {
           { // Other JS files
             cwd: 'src/client',
             src: ['systemjs.config.js'],
+            dest: 'www',
+            expand: true
+          },
+          { // Static web files
+            cwd: 'static',
+            src: '**/*',
             dest: 'www',
             expand: true
           }

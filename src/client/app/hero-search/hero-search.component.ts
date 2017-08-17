@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 
 import { HeroSearchService } from './hero-search.service';
-import { Hero } from '../shared/index';
+import { Hero } from '../shared/hero';
 
 @Component({
   selector: 'hero-search',
@@ -27,17 +27,17 @@ export class HeroSearchComponent implements OnInit {
 
   ngOnInit(): void {
     this.heroes = this.searchTerms
-      .debounceTime(300) // Wait for 300 ms pause in events
-      .distinctUntilChanged() // Ignore if next search term is same as previous.
-      .switchMap(term => {
-        return term ?
-          this.heroSearchService.search(term) :
-          Observable.of<Hero[]>([])
-      })
-      .catch(error => {
-        console.log(error);
-        return Observable.of<Hero[]>([]);
-      });
+    .debounceTime(300) // Wait for 300 ms pause in events
+    .distinctUntilChanged() // Ignore if next search term is same as previous.
+    .switchMap(term => {
+      return term ?
+        this.heroSearchService.search(term) :
+        Observable.of<Hero[]>([])
+    })
+    .catch(error => {
+      console.log(error);
+      return Observable.of<Hero[]>([]);
+    });
   }
 
   search(term: string): void {
