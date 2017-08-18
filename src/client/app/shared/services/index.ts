@@ -6,3 +6,4 @@ export * from './DialogsService';
 export * from './FileSelectorService';
 export * from './RestService';
 export * from './SystemService';
+export * from './UtilService';

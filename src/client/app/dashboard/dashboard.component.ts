@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { Hero, HeroService } from '../shared/hero';
+import {
+  InputTextDialog
+} from '../shared/dialogs';
+import { DialogsService } from '../shared/services';
 
 @Component({
   selector: 'my-dashboard',
@@ -13,7 +17,9 @@ export class DashboardComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private heroService: HeroService) {}
+    private heroService: HeroService,
+    private dialogsService: DialogsService
+  ) {}
 
   ngOnInit(): void {
     this.heroService.getHeroes()
@@ -23,5 +29,12 @@ export class DashboardComponent implements OnInit {
   gotoDetail(hero: Hero): void {
     let link = ['/detail', hero._id];
     this.router.navigate(link);
+  }
+
+  testDialog(): void {
+    this.dialogsService.show(InputTextDialog, { message: 'This is a test.' })
+    .then(value => {
+      console.log(value);
+    });
   }
 }

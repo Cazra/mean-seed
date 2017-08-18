@@ -11,6 +11,14 @@ import { HeroDetailComponent } from './hero-detail';
 import { HeroSearchComponent } from './hero-search';
 
 import {
+  ConfirmDialog,
+  HelloDialog,
+  InputTextDialog,
+  ModalDialogs,
+  OkDialog
+} from './shared/dialogs';
+
+import {
   Base64Pipe,
   ByteSizePipe,
   DecodeHexPipe,
@@ -21,7 +29,8 @@ import {
   DialogsService,
   FileSelectorService,
   RestService,
-  SystemService
+  SystemService,
+  UtilService
 } from './shared/services';
 
 import { HeroService } from './shared/hero';
@@ -46,11 +55,25 @@ import { HeroesComponent } from './heroes';
       ByteSizePipe,
       DecodeHexPipe,
       YesNoPipe
+    ],
+
+    ...[ // dialogs
+      ConfirmDialog,
+      HelloDialog,
+      InputTextDialog,
+      ModalDialogs,
+      OkDialog
     ]
   ],
   entryComponents: [
     // Any components that would be dynamically created (such as modular
     // dialogs) should go here.
+    ...[
+      ConfirmDialog,
+      HelloDialog,
+      InputTextDialog,
+      OkDialog
+    ]
   ],
   providers: [
     HeroService,
@@ -59,7 +82,8 @@ import { HeroesComponent } from './heroes';
       DialogsService,
       FileSelectorService,
       RestService,
-      SystemService
+      SystemService,
+      UtilService
     ]
   ],
   bootstrap: [ AppComponent ] // Identifies the root component to bootstrap on start-up.

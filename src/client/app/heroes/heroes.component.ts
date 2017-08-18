@@ -2,7 +2,9 @@ import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { InputTextDialog } from '../shared/dialogs';
 import { Hero, HeroService } from '../shared/hero';
+import { DialogsService } from '../shared/services';
 
 @Component({
   selector: 'my-heroes',
@@ -10,30 +12,35 @@ import { Hero, HeroService } from '../shared/hero';
   styleUrls: ['app/heroes/heroes.component.css']
 })
 export class HeroesComponent implements OnInit {
-  addingHero: boolean;
   selectedHero: Hero;
   heroes: Hero[];
   error: any;
 
   constructor(
     private router: Router,
-    private heroService: HeroService) {}
+    private heroService: HeroService,
+    private dialogsService: DialogsService
+  ) {}
 
   addHero(): void {
-    this.addingHero = true;
     this.selectedHero = null;
-  }
-
-  close(savedHero: Hero): void {
-    this.addingHero = false;
-    if(savedHero)
-      this.getHeroes();
+    this.dialogsService.show(InputTextDialog, { message: 'Enter hero name:' })
+    .then(name => {
+      let hero = new Hero();
+      hero.name = name;
+      return this.heroService.save(hero);
+    })
+    .then(savedHero => {
+      if(savedHero)
+        this.getHeroes();
+    })
+    .catch(err => {
+      this.error = err;
+    });
   }
 
   deleteHero(hero: Hero, event: any): void {
     event.stopPropagation();
-
-    console.log(hero);
 
     this.heroService.delete(hero)
       .then(res => {

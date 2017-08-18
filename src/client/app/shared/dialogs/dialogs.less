@@ -1,0 +1,37 @@
+.modalDialogContainer {
+  display: none;
+  position: fixed;
+
+  /* It's over 9000!!! */
+  z-index: 9001;
+
+  .curDialog {
+    background: #fff;
+    border-radius: 0.25in;
+    box-shadow: 0 0 0.5in #000;
+    left: 50%;
+    max-height: 90vh;
+    max-width: 90vw;
+    padding: 0.25in;
+    position: fixed;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    .focusable:focus {
+      outline: transparent;
+    }
+  }
+
+  .mask {
+    background: rgba(0, 0, 0, 0.5);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+  }
+
+  &.active {
+    display: block;
+  }
+}

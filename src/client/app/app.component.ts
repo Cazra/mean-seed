@@ -1,4 +1,8 @@
-import {Component} from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ViewChild
+} from '@angular/core';
 
 import './rxjs-extensions';
 
@@ -9,4 +13,16 @@ import './rxjs-extensions';
 })
 export class AppComponent {
   title = 'Tour of Heroes';
+
+  /**
+   * Container for modal dialogs.
+   */
+  @ViewChild('dialogs') dialogs;
+
+  /**
+   * Remove the loading mask once the app is initialized.
+   */
+  ngOnInit(): void {
+    // document.querySelector('#loadingMask').calssList.remove('active');
+  }
 }

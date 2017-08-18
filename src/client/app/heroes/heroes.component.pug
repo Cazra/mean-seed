@@ -10,8 +10,6 @@ ul.heroes
 
 button((click)='addHero()') Add new Hero
 
-div(*ngIf='addingHero')
-  my-hero-detail((close)='close($event)')
 div(*ngIf='selectedHero')
   h2 {{selectedHero.name | uppercase}} is my hero
   button((click)='gotoDetail()') View Details
