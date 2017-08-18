@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 
 import { Hero, HeroService } from '../shared/hero';
 import {
-  InputTextDialog
+  InputSelectDialog
 } from '../shared/dialogs';
 import { DialogsService } from '../shared/services';
 
@@ -32,7 +32,14 @@ export class DashboardComponent implements OnInit {
   }
 
   testDialog(): void {
-    this.dialogsService.show(InputTextDialog, { message: 'This is a test.' })
+    this.dialogsService.show(InputSelectDialog, {
+      message: 'This is a test.',
+      options: [
+        { value: 1, view: 'one' },
+        { value: 2, view: 'two' },
+        { value: 3, view: 'three' }
+      ]
+    })
     .then(value => {
       console.log(value);
     });

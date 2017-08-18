@@ -13,6 +13,8 @@ import { HeroSearchComponent } from './hero-search';
 import {
   ConfirmDialog,
   HelloDialog,
+  InputNumberDialog,
+  InputSelectDialog,
   InputTextDialog,
   ModalDialogs,
   OkDialog
@@ -60,21 +62,28 @@ import { HeroesComponent } from './heroes';
     ...[ // dialogs
       ConfirmDialog,
       HelloDialog,
+      InputNumberDialog,
+      InputSelectDialog,
       InputTextDialog,
       ModalDialogs,
       OkDialog
     ]
   ],
+
+  // Any components that would be dynamically created (such as modular
+  // dialogs) should go here.
   entryComponents: [
-    // Any components that would be dynamically created (such as modular
-    // dialogs) should go here.
     ...[
       ConfirmDialog,
       HelloDialog,
+      InputNumberDialog,
+      InputSelectDialog,
       InputTextDialog,
       OkDialog
     ]
   ],
+
+  // All injectables should go in here.
   providers: [
     HeroService,
 
@@ -86,6 +95,8 @@ import { HeroesComponent } from './heroes';
       UtilService
     ]
   ],
-  bootstrap: [ AppComponent ] // Identifies the root component to bootstrap on start-up.
+
+  // Identifies the root component to bootstrap on start-up.
+  bootstrap: [ AppComponent ]
 })
 export class AppModule {};

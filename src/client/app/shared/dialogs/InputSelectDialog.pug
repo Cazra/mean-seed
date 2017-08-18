@@ -1,0 +1,6 @@
+.centeredH.focusable(tabindex='0', (keydown.enter)='resolve(value)', (keydown.escape)='cancel()')
+  div {{message}}
+  select([(ngModel)]='value')
+    option(*ngFor='let option of options', [value]='option.value') {{option.view}}
+  button.btn-default((click)='resolve(value)') OK
+  button.btn-default((click)='cancel()') Cancel

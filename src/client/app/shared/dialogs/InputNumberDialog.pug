@@ -1,0 +1,5 @@
+.centered.focusable(tabindex='0', (keydown.enter)='resolve(value)', (keydown.escape)='cancel()')
+  div {{message}}
+  input(type='number', [(ngModel)]='value')
+  button.btn-default((click)='resolve(value)') OK
+  button.btn-default((click)='cancel()') Cancel
