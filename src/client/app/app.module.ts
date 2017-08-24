@@ -21,6 +21,10 @@ import {
 } from './shared/dialogs';
 
 import {
+  PaginationComponent
+} from './shared/pagination';
+
+import {
   Base64Pipe,
   ByteSizePipe,
   DecodeHexPipe,
@@ -51,6 +55,9 @@ import { HeroesComponent } from './heroes';
     HeroDetailComponent,
     HeroSearchComponent,
     HeroesComponent,
+
+    // shared
+    PaginationComponent,
 
     ...[ // pipes
       Base64Pipe,

@@ -1,0 +1,39 @@
+// pagination navigator.
+.pagination(*ngIf='paging && paging.count > 0')
+  a(
+    *ngIf='paging.page > 1',
+    title='first',
+    (click)='onPageClick(1)'
+  ): span.glyphicon.glyphicon-step-backward
+  a(
+    *ngIf='paging.page > 1',
+    title='previous',
+    (click)='onPageClick(paging.page - 1)'
+  ): span.glyphicon.glyphicon-backward
+  a.pageNum(
+    *ngIf='paging.page - 2 > 0',
+    (click)='onPageClick(paging.page - 2)'
+  ) {{paging.page - 2}}
+  a.pageNum(
+    *ngIf='paging.page - 1 > 0',
+    (click)='onPageClick(paging.page - 1)'
+  ) {{paging.page - 1}}
+  a.pageNum.disabled {{paging.page}}
+  a.pageNum(
+    *ngIf='paging.page + 1 <= paging.pageCount',
+    (click)='onPageClick(paging.page + 1)'
+  ) {{paging.page + 1}}
+  a.pageNum(
+    *ngIf='paging.page + 2 <= paging.pageCount',
+    (click)='onPageClick(paging.page + 2)'
+  ) {{paging.page + 2}}
+  a(
+    *ngIf='paging.page < paging.pageCount',
+    title='next',
+    (click)='onPageClick(paging.page + 1)'
+  ): span.glyphicon.glyphicon-forward
+  a(
+    *ngIf='paging.page < paging.pageCount',
+    title='last',
+    (click)='onPageClick(paging.pageCount)'
+  ): span.glyphicon.glyphicon-step-forward
