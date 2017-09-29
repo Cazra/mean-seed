@@ -153,19 +153,7 @@ module.exports = function(grunt) {
     },
     ts: {
       default: {
-        src: ['src/client/app/**/*.ts', 'typings/**/*.d.ts'],
-        out: 'www/app/main.js'
-        //outDir: 'www/app'
-      },
-      options: {
-        emitDecoratorMetadata: true,
-        experimentalDecorators: true,
-        module: 'system',
-        moduleResolution: 'node',
-        noImplicitAny: false,
-        removeComments: false,
-        sourceMap: false,
-        target: 'es5'
+        tsconfig: true
       }
     },
     tslint: {

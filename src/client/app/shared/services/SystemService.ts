@@ -20,7 +20,7 @@ export class SystemService {
    *        The MIME type of the file.
    *        E.g. "text", "arraybuffer", "json"...
    */
-  getStaticFile(path: string, responseType: string = 'text'): Promise<any> {
+  getStaticFile(path: string, responseType: XMLHttpRequestResponseType = 'text'): Promise<any> {
     return new Promise((resolve, reject) => {
       let xhr = new XMLHttpRequest();
       xhr.addEventListener('load', () => {

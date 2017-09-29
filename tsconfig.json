@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "lib": ["es2017", "dom"],
+    "module": "system",
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "removeComments": false,
+    "preserveConstEnums": true,
+    "outFile": "www/app/main.js",
+    "sourceMap": false,
+    "target": "es5"
+  },
+  "include": [
+    "src/client/app/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
